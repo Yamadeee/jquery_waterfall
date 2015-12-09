@@ -1,0 +1,27 @@
+.clearfix{
+    *zoom: 1;
+}
+.clearfix::before,.clearfix::after{
+    content: "";
+    display: table;
+    line-height: 0;
+    clear:both;
+}
+#main{
+    position: relative;
+}
+.box{
+    padding: 15px 0 0 15px;
+    float: left;
+}
+.box .pic{
+    padding: 10px;
+    border:1px solid #c0c0c0;
+    border-radius: 5px;
+    -moz-box-shadow: 3px 3px 5px #C8C8C8;
+    -webkit-box-shadow: 3px 3px 5px #C8C8C8;
+    box-shadow: 3px 3px 5px #C8C8C8;
+}
+.box .pic img{
+    width: 170px;
+}

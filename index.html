@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="waterfull.css"/>
+    <script src="jquery-2.1.4.js"></script>
+   
+    
+    <title>waterfull</title>
+</head>
+<body>
+<div id="main" class="clearfix">
+    <!--<div class="box">
+        <div class="pic">
+            <img src="image/00.jpg" alt=""/>
+        </div>
+    </div>
+    <div class="box">
+        <div class="pic">
+            <img src="image/01.jpg" alt=""/>
+        </div>
+    </div>
+    <div class="box">
+        <div class="pic">
+            <img src="image/02.jpg" alt=""/>
+        </div>
+    </div>
+    <div class="box">
+        <div class="pic">
+            <img src="image/03.jpg" alt=""/>
+        </div>
+    </div>
+    <div class="box">
+        <div class="pic">
+            <img src="image/04.jpg" alt=""/>
+        </div>
+    </div>
+    <div class="box">
+        <div class="pic">
+            <img src="image/05.jpg" alt=""/>
+        </div>
+    </div>
+    <div class="box">
+        <div class="pic">
+            <img src="image/06.jpg" alt=""/>
+        </div>
+    </div>
+    <div class="box">
+        <div class="pic">
+            <img src="image/07.jpg" alt=""/>
+        </div>
+    </div>
+    <div class="box">
+        <div class="pic">
+            <img src="image/08.jpg" alt=""/>
+        </div>
+    </div>-->
+</div>
+<script src="jquery.waterfull.js"></script>
+<script type="text/javascript">
+    var dataLink = {
+        source: [
+            {'src': 'image/00.jpg'},
+            {'src': 'image/01.jpg'},
+            {'src': 'image/02.jpg'},
+            {'src': 'image/03.jpg'},
+            {'src': 'image/04.jpg'},
+            {'src': 'image/05.jpg'},
+            {'src': 'image/06.jpg'},
+            {'src': 'image/07.jpg'},
+            {'src': 'image/08.jpg'},
+            {'src': 'image/23.jpg'},
+            {'src': 'image/25.jpg'},
+            {'src': 'image/26.jpg'},
+            {'src': 'image/27.jpg'},
+            {'src': 'image/28.jpg'},
+            {'src': 'image/29.jpg'},
+            {'src': 'image/30.jpg'},
+            {'src': 'image/31.jpg'},
+            {'src': 'image/32.jpg'},
+            {'src': 'image/33.jpg'},
+            {'src': 'image/34.jpg'},
+            {'src': 'image/35.jpg'}]
+    };
+    var getIndex = function(boxH, minH){
+        for(var i = 0; i < boxH.length; i++){
+            if(boxH[i] == minH){
+                return i;
+            }
+        }
+    };
+    var water = function(dataLink){
+        var boxWidth = $($('.box')[0]).outerWidth();
+        var colums = Math.floor($('#main').width() / boxWidth),
+                boxH = [];
+        $('#main').css({
+            'width': boxWidth * colums+'px',
+            'margin': '0 auto'
+        });
+        for(var i = 0; i < dataLink.source.length; i++){
+            if(i < colums){
+                console.log($($('.box')[i]).outerHeight());
+                boxH.push($($('.box')[i]).outerHeight());
+            }else{
+                var minH = Math.min.apply(null, boxH),
+                        minIndex = getIndex(boxH, minH);
+                $($('.box')[i]).css({
+                    'position': 'absolute',
+                    'left': boxWidth * minIndex+'px',
+                    'top': minH+'px'
+                });
+                if(i==13){
+                    console.log($($('.box')[13]).html());
+
+                }
+                boxH[minIndex] += $($('.box')[i]).outerHeight();
+            }
+        }
+
+    }
+    //water(dataLink);
+</script>
+</body>
+
+</html>
